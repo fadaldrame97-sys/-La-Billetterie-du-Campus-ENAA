@@ -11,10 +11,10 @@ Route::get('/', function () {
 
 
 
-Route::get('/login',[AuthController::class,'ShowLogin'])->name('login');
+Route::get('/login',[AuthController::class,'showLogin'])->name('login');
 
-Route::put('/login',[AuthController::class,'login'])->name('login.store');
-Route::put('/logout',[AuthController::class,'login'])->middleware('auth')->name('logout');
+Route::post('/login',[AuthController::class,'login'])->name('login.store');
+Route::post('/logout',[AuthController::class,'logout'])->middleware('auth')->name('logout');
 
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
