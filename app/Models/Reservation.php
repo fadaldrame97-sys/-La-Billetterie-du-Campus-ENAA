@@ -11,4 +11,10 @@ class Reservation extends Model
         'event_id',
         'ticket_code',
     ];
+
+    public function User(){
+        return $this->belongsTo(User::class);
+    }
+
+    
 }
