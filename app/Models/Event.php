@@ -3,8 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Event extends Model
 {
-    //
+    protected $fillable = [
+        'title',
+        'description',
+        'date',
+        'time',
+        'location',
+        'price',
+        'capacity',
+    ];
+
+    public function reservations():HasMany
+    {
+        return $this->hasMany(Reservation::class);
+    }
 }
