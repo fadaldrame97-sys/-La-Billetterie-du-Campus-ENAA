@@ -9,14 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::create('reservations', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+    public function up(): void {
+      Schema::create('reservations', function (Blueprint $table) {
+        $table->id();
 
+        $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+        $table->foreignId('event_id')->constrained()->cascadeOnDelete();
+
+        $table->string('ticket_code')->unique();
+
+        $table->unique(['user_id', 'event_id']);
+
+        $table->timestamps();
+      });
+    }
     /**
      * Reverse the migrations.
      */
