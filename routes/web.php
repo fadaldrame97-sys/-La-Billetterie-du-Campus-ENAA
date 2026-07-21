@@ -14,6 +14,7 @@ Route::get('/', function () {
 Route::get('/login',[AuthController::class,'ShowLogin'])->name('login');
 
 Route::put('/login',[AuthController::class,'login'])->name('login.store');
+Route::put('/logout',[AuthController::class,'login'])->middleware('auth')->name('logout');
 
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
