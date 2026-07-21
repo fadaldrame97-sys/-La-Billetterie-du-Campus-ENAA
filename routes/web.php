@@ -3,10 +3,17 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+Route::get('/login',[AuthController::class,'ShowLogin'])->name('login');
+
+Route::put('/login',[AuthController::class,'login'])->name('login.store');
 
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
