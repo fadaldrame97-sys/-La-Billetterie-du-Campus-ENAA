@@ -28,6 +28,27 @@
     </form>
     <h1>Dashboard Admin</h1>
 
+        @foreach($events as $event)
+
+        <div class="bg-white shadow rounded-lg p-5 mb-4">
+
+            <h2 class="text-xl font-bold text-blue-600">
+                {{ $event->title }}
+            </h2>
+
+            <p>{{ $event->description }}</p>
+
+            <p><strong>Date :</strong> {{ $event->date }}</p>
+
+            <p><strong>Lieu :</strong> {{ $event->location }}</p>
+
+            <p><strong>Prix :</strong> {{ $event->price }} DH</p>
+
+            <p><strong>Capacité :</strong> {{ $event->capacity }}</p>
+
+        </div>
+
+
     
 
 </body>
