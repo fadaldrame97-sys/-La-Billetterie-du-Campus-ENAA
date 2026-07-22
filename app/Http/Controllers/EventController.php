@@ -16,6 +16,11 @@ class EventController extends Controller
         return view('admin.events.create');
     }
 
+
+    public function liste(){
+        return view('events.index');
+    }
+
     public function store(Request $request)
     {
 
