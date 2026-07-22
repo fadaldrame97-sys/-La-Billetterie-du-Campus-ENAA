@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Event;
 
 class EventController extends Controller
 {
@@ -32,6 +33,17 @@ class EventController extends Controller
         'price' => 'required|integer',
         'capacity' => 'required|integer',
     ]);
+
+    Event::create([
+        'title' => $request->title,
+        'description' => $request->description,
+        'date' => $request->date,
+        'time' => $request->time,
+        'location' => $request->location,
+        'price' => $request->price,
+        'capacity' => $request->capacity,
+    ]);
+     return redirect()->route('admin.dashboard');
 
 
     }
