@@ -11,16 +11,18 @@ class ReservationController extends Controller
 {
     public function store(Event $event){
 
-        $reservation=Reservation::where('event_id',$event->id)->count();
-        if($reservation>= $event->capacity){
+        $nombreReservations=Reservation::where('event_id',$event->id)->count();
+        if($nombreReservations>= $event->capacity){
             return back()->with('error', 'Toutes les place sont occupées');
         }
 
         Reservation::create([
         'user_id' => Auth::id(),
         'event_id' => $event->id,
-        'ticket_code' => '',
-]);
+        'ticket_code' => 'PASS'.uniqid(),
+       ]);
+
+       return redirect()->route('events.index');
 
     }
 }
