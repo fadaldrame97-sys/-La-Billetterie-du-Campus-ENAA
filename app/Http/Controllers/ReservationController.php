@@ -9,6 +9,10 @@ class ReservationController extends Controller
 {
     public function store(Event $event){
 
-        $resrvation=Reservation::where('event_id',$event->id)->count();
+        $reservation=Reservation::where('event_id',$event->id)->count();
+        if($reservation>= $event->capacity){
+            return back()->with('error', 'Toutes les place sont occupées');
+        }
+
     }
 }
