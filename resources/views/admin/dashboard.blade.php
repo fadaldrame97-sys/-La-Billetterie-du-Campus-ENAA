@@ -7,9 +7,8 @@
      <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 
-    <a href="{{ route('events.create') }}">
-    Créer un événement
-</a>
+ 
+    
 </head>
 <body>
 
