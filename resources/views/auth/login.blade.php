@@ -15,7 +15,9 @@
             Connexion
         </h1>
 
-        <form action="{{ route('login.store') }}" method="POST">
+         @if(session('error')) <p class="text-red-600"> {{ session('error') }} </p>@endif
+
+             <form action="{{ route('login.store') }}" method="POST">
 
             @csrf
 

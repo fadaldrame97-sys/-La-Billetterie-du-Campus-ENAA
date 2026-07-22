@@ -12,21 +12,18 @@ class AuthController extends Controller
        return view('auth.login');
     }
 
-    public function login(Request $request)
-    {
-        $request->validate([
-         'email' => 'required|email',
-         'password' => 'required',
-        ]);
+    public function login(Request $request){
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
 
-            if (Auth::attempt([
-              'email' => $request->email,
-              'password' => $request->password,
-        ])) {
+    if (Auth::attempt([
+        'email' => $request->email,
+        'password' => $request->password,
+    ])) {
 
-          $request->session()->regenerate();
-
-        }
+        $request->session()->regenerate();
 
         if (Auth::user()->role == 'admin') {
 
@@ -34,8 +31,23 @@ class AuthController extends Controller
 
         }
 
-    public function logout(Request $request)
-    {
+        return redirect('/');
 
+    }
+
+    return back()->with('error', 'Email ou mot de passe incorrect.');
+    }
+
+
+
+   public function logout(Request $request){
+    
+   Auth::logout();
+
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+
+    return redirect('/login');
     }
 }
