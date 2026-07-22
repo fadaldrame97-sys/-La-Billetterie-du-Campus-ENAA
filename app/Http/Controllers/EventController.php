@@ -11,7 +11,7 @@ class EventController extends Controller
     {
       $events=Event::all();
 
-        return view('admin.dashboard',compact($events));
+        return view('admin.dashboard',compact('events'));
     }
 
     public function create()
@@ -24,7 +24,7 @@ class EventController extends Controller
 
         $events=Event::all();
 
-        return view('events.index',compact($events));
+        return view('events.index',compact('events'));
        
     }
 
