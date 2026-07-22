@@ -21,8 +21,18 @@ class EventController extends Controller
         return view('events.index');
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request){
+
+        $request->validate([
+        'title' => 'required',
+        'description' => 'required',
+        'date' => 'required',
+        'time' => 'required',
+        'location' => 'required',
+        'price' => 'required|integer',
+        'capacity' => 'required|integer',
+    ]);
+
 
     }
 }

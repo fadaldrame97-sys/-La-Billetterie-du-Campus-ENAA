@@ -11,6 +11,20 @@
 </a>
 </head>
 <body>
+
+    <a href="{{ route('events.create') }}">
+    Créer un événement
+    </a>
+
+    <form action="{{ route('logout') }}" method="POST">
+    @csrf
+
+    <button
+        type="submit"
+        class="bg-red-600 text-white px-4 py-2 rounded">
+        Déconnexion
+    </button>
+    </form>
     <h1>Dashboard Admin</h1>
 </body>
 </html>
