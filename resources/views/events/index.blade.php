@@ -9,6 +9,12 @@
 </head>
 <body class="bg-gray-100">
 
+      <button
+        type="submit"
+        class="bg-red-600 text-white px-4 py-2 rounded">
+        Déconnexion
+    </button>
+
 <div class="max-w-4xl mx-auto mt-10">
 
     <h1 class="text-3xl font-bold text-center mb-8">
