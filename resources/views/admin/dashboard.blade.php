@@ -47,7 +47,7 @@
             <p><strong>Capacité :</strong> {{ $event->capacity }}</p>
 
         </div>
-
+@endforeach
 
     
 
