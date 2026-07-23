@@ -1,58 +1,152 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# BDE-Events
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Liens du projet
 
-## About Laravel
+1-planification JIRA
+_https://ihsanebenmouina-1776158181609.atlassian.net/jira/software/projects/BELBDCE/boards/464
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+2-Présentation Canva
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-https://www.canva.com/design/DAHQNt-tI3A/1j2FiimXH-J8savCixpjWw/edit?ui=eyJFIjp7Im0iOnRydWUsIkE_IjoibiJ9LCJLIjp7IkEiOiI0ZDI4ZDY4OS1jYzBmLTQ0YWMtYmRjMS00NWM4OTdlZTliOWQifX0
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+3-Lien GitHub
 
-## Learning Laravel
+https://github.com/fadaldrame97-sys/-La-Billetterie-du-Campus-ENAA
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Présentation
 
-## Agentic Development
+BDE-Events est une application web développée avec Laravel dans le cadre d'un brief de formation Développeur Web et Web Mobile.
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+L'objectif est de permettre au Bureau des Étudiants (BDE) de gérer les événements du campus et de donner aux étudiants la possibilité de réserver leur place et de consulter leurs billets depuis leur espace personnel.
+
+---
+
+## Fonctionnalités
+
+### Administrateur
+
+- Connexion sécurisée
+- Création d'un événement
+- Consultation du tableau de bord
+- Visualisation du nombre de réservations
+- Calcul automatique des places restantes
+- Consultation de la liste des étudiants inscrits
+
+### Étudiant
+
+- Connexion
+- Consultation des événements disponibles
+- Réservation d'un événement
+- Vérification qu'un événement n'est pas complet
+- Empêche une double réservation
+- Consultation de l'espace **Mes Billets**
+- Génération automatique d'un code de réservation unique
+
+---
+
+## Technologies utilisées
+
+- Laravel 13
+- PHP
+- MySQL
+- Eloquent ORM
+- Blade
+- Tailwind CSS
+- Git & GitHub
+
+---
+
+## Base de données
+
+L'application est composée de trois tables principales :
+
+- users
+- events
+- reservations
+
+Une réservation est liée à un utilisateur et à un événement.
+
+---
+
+## Installation
+
+Cloner le projet :
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone <url-du-projet>
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Entrer dans le dossier :
 
-## Contributing
+```bash
+cd BDE-Events
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Installer les dépendances :
 
-## Code of Conduct
+```bash
+composer install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Copier le fichier d'environnement :
 
-## Security Vulnerabilities
+```bash
+cp .env.example .env
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Générer la clé :
 
-## License
+```bash
+php artisan key:generate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Configurer la base de données dans le fichier `.env`.
+
+Lancer les migrations :
+
+```bash
+php artisan migrate
+```
+
+Démarrer le serveur :
+
+```bash
+php artisan serve
+```
+
+---
+
+## Sécurité
+
+L'application utilise un middleware personnalisé `IsAdmin` afin de protéger toutes les routes d'administration.
+
+Les étudiants ne peuvent pas accéder aux pages réservées au BDE.
+
+Les réservations sont également sécurisées :
+
+- impossible de réserver deux fois le même événement ;
+- impossible de réserver lorsqu'il n'y a plus de places disponibles.
+
+---
+
+## Structure du projet
+
+```
+app/
+ ├── Models
+ ├── Http
+ │    ├── Controllers
+ │    └── Middleware
+resources/
+ └── views/
+routes/
+database/
+```
+
+---
+
+## Auteur
+
+Projet réalisé par **Mouhamadou Fadal Dramé** dans le cadre du brief **BDE-Events** à ENAA Digital Center.

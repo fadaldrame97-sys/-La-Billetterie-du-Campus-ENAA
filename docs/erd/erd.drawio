@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="6lxJdS2BlGBezG8UISjk" name="Page-1">
-        <mxGraphModel dx="743" dy="398" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#FFFDFA" math="0" shadow="0">
+        <mxGraphModel dx="998" dy="466" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#FFFDFA" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -277,18 +277,13 @@
                         <mxPoint x="98" y="301" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="96" value="Effectue" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="95" vertex="1" connectable="0">
-                    <mxGeometry x="0.0027" y="2" relative="1" as="geometry">
-                        <mxPoint x="1" as="offset"/>
-                    </mxGeometry>
-                </mxCell>
                 <mxCell id="97" value="" style="endArrow=none;html=1;rounded=0;startArrow=ERzeroToMany;startFill=0;entryX=0.577;entryY=1.137;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="45" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="366" y="474" as="sourcePoint"/>
                         <mxPoint x="360" y="299" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="98" value="Concerne" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="97" vertex="1" connectable="0">
+                <mxCell id="98" value="Appartient à" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="97" vertex="1" connectable="0">
                     <mxGeometry x="0.0027" y="2" relative="1" as="geometry">
                         <mxPoint x="1" as="offset"/>
                     </mxGeometry>
