@@ -16,7 +16,9 @@ Route::get('/login',[AuthController::class,'showLogin'])->name('login');
 Route::post('/login',[AuthController::class,'login'])->name('login.store');
 Route::post('/logout',[AuthController::class,'logout'])->middleware('auth')->name('logout');
 
-  Route::get('/events', [EventController::class, 'liste'])->middleware('auth')->name('events.index');
+Route::get('/events', [EventController::class, 'liste'])->middleware('auth')->name('events.index');
+
+Route::get('/mes-Pass',[ReservationController::class,'mesPass'])->middleware('auth')->name('reservations.index');
 
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
