@@ -52,6 +52,28 @@
             <p><strong>Réservations :</strong> {{ $event->reservations->count() }}</p>
 
              <p><strong>Les places disponibles :</strong> {{ $LesPlacesDisponibles }}</p>
+            
+             <p><strong>Les Etudiants inscrits :</strong> 
+
+            @if($event->reservations->count() > 0)
+
+    <ul class="list-disc ml-6">
+
+        @foreach($event->reservations as $reservation)
+
+            <li>{{ $reservation->user->name }}</li>
+
+        @endforeach
+
+    </ul>
+
+@else
+
+    <p class="text-gray-500">Aucun étudiant inscrit.</p>
+
+@endif
+
+
 
         </div>
 @endforeach
