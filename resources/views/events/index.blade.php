@@ -9,11 +9,15 @@
 </head>
 <body class="bg-gray-100">
 
-      <button
+<form action="{{ route('logout') }}" method="POST">
+    @csrf
+
+    <button
         type="submit"
         class="bg-red-600 text-white px-4 py-2 rounded">
         Déconnexion
     </button>
+</form>
 
 <div class="max-w-4xl mx-auto mt-10">
 
@@ -59,9 +63,15 @@
                 {{ $event->capacity }}
             </p>
 
-            <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-                Réserver
-            </button>
+            <form action="{{ route('reservations.store', $event->id) }}" method="POST">
+    @csrf
+
+    <button
+        type="submit"
+        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+        Réserver
+    </button>
+</form>
 
         </div>
 
