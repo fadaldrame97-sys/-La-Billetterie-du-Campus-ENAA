@@ -46,7 +46,7 @@ class ReservationController extends Controller
       
 
 
-       return redirect()->route('events.index');
+       return redirect()->route('events.index')->with('success', 'Réservation effectuée avec succès !');
 
     }
 }

@@ -27,6 +27,20 @@
 
     @foreach($events as $event)
 
+
+
+    @if(session('success'))
+    <div class="bg-green-100 text-green-700 p-3 mb-4 rounded">
+        {{ session('success') }}
+    </div>
+    @endif
+
+    @if(session('error'))
+    <div class="bg-red-100 text-red-700 p-3 mb-4 rounded">
+        {{ session('error') }}
+    </div>
+     @endif
+
         <div class="bg-white rounded-lg shadow p-6 mb-6">
 
             <h2 class="text-xl font-bold text-blue-600 mb-3">
