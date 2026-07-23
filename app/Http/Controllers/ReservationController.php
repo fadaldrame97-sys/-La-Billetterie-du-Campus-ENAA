@@ -21,7 +21,9 @@ class ReservationController extends Controller
     
     public function store(Event $event){
 
-
+        if (Auth::user()->role == 'admin') {
+       return redirect()->route('admin.dashboard')->with('error', 'Les administrateurs ne peuvent pas réserver des événements.');
+         }
 
         $ReserveDeja=Reservation::where('user_id',Auth::id())->where('event_id',$event->id)->first();
         
