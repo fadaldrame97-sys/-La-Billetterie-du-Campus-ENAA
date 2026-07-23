@@ -37,7 +37,7 @@ class EventController extends Controller
         'time' => 'required',
         'location' => 'required',
         'price' => 'required|integer',
-        'capacity' => 'required|integer',
+        'capacity' => 'required|integer|min:1',
     ]);
 
     Event::create([
