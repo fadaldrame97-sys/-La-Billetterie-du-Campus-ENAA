@@ -8,7 +8,7 @@
     <title>Document</title>
 
  
-    
+
 </head>
 <body>
 
@@ -29,6 +29,10 @@
 
         @foreach($events as $event)
 
+        @php
+          $LesPlacesDisponibles= $event->capacity - $event->reservations->count();
+        @endphp
+
         <div class="bg-white shadow rounded-lg p-5 mb-4">
 
             <h2 class="text-xl font-bold text-blue-600">
@@ -44,6 +48,10 @@
             <p><strong>Prix :</strong> {{ $event->price }} DH</p>
 
             <p><strong>Capacité :</strong> {{ $event->capacity }}</p>
+
+            <p><strong>Réservations :</strong> {{ $event->reservations->count() }}</p>
+
+             <p><strong>Les places disponibles :</strong> {{ $LesPlacesDisponibles }}</p>
 
         </div>
 @endforeach
