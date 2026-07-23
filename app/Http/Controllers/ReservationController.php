@@ -8,7 +8,17 @@ use App\Models\Event;
 use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
-{
+{    
+
+    public function index(){
+      
+    $reservations=Reservation::where('user_id',Auth::id())->get();
+
+        return view('reservations.index',compact('reservations'));
+    }
+
+
+    
     public function store(Event $event){
 
 
