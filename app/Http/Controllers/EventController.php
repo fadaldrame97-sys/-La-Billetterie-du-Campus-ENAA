@@ -65,7 +65,7 @@ class EventController extends Controller
     public function update(Request $request, Event $event){
 
     $request->validate([
-        
+
         'title' => 'required',
         'description' => 'required',
         'date' => 'required',
@@ -78,5 +78,14 @@ class EventController extends Controller
     $event->update($request->all());
 
     return redirect()->route('admin.dashboard')->with('success', 'Événement modifié avec succès.');
+}
+
+
+public function destroy(Event $event){
+
+    $event->delete();
+
+    return redirect()->route('admin.dashboard')->with('sucess','Evenemnet est supprimé');
+
 }
 }
