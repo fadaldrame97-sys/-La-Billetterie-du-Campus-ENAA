@@ -133,17 +133,8 @@ Les réservations sont également sécurisées :
 
 ## Structure du projet
 
-```
-app/
- ├── Models
- ├── Http
- │    ├── Controllers
- │    └── Middleware
-resources/
- └── views/
-routes/
-database/
-```
+
+MVC
 
 ---
 

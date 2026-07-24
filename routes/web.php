@@ -24,6 +24,8 @@ Route::get('/mes-Pass',[ReservationController::class,'index'])->middleware('auth
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
 
+    Route::get('/admin/event/{event}/edit',[EventController::class,'edit'])->name('events.edit');
+
     Route::get('/admin/dashboard', [EventController::class, 'index'])->name('admin.dashboard');
 
     Route::get('/admin/events/create', [EventController::class, 'create'])->name('events.create');
