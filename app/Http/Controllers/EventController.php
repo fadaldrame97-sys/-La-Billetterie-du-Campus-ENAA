@@ -55,7 +55,7 @@ class EventController extends Controller
 
     }
 
-    public function edi(Event $event){
+    public function edit(Event $event){
 
         return view('admin.events.edit',compact('event'));
 

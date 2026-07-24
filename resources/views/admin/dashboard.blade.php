@@ -81,7 +81,40 @@
 
 
 
+
+
+
+
         </div>
+
+
+<div class="mt-4 flex gap-3">
+
+    <a href="{{ route('events.edit', $event) }}"
+       class="bg-yellow-500 text-white px-4 py-2 rounded">
+        Modifier
+    </a>
+
+    <form action="{{ route('events.destroy', $event) }}"
+          method="POST">
+
+        @csrf
+        @method('DELETE')
+
+        <button
+            class="bg-red-600 text-white px-4 py-2 rounded"
+            onclick="return confirm('Supprimer cet événement ?')">
+
+            Supprimer
+
+        </button>
+
+    </form>
+
+</div>
+
+
+
 @endforeach
 
     
