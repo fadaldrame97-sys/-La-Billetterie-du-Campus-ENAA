@@ -49,13 +49,14 @@ class EventController extends Controller
         'price' => $request->price,
         'capacity' => $request->capacity,
     ]);
+    
      return redirect()->route('admin.dashboard');
 
 
     }
 
     public function edi(Event $event){
-        
+
         return view('admin.events.edit',compact('event'));
 
     }
