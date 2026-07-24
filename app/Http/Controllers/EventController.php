@@ -49,7 +49,7 @@ class EventController extends Controller
         'price' => $request->price,
         'capacity' => $request->capacity,
     ]);
-    
+
      return redirect()->route('admin.dashboard');
 
 
@@ -60,4 +60,23 @@ class EventController extends Controller
         return view('admin.events.edit',compact('event'));
 
     }
+
+
+    public function update(Request $request, Event $event){
+
+    $request->validate([
+        
+        'title' => 'required',
+        'description' => 'required',
+        'date' => 'required',
+        'time' => 'required',
+        'location' => 'required',
+        'price' => 'required|integer',
+        'capacity' => 'required|integer|min:1',
+    ]);
+
+    $event->update($request->all());
+
+    return redirect()->route('admin.dashboard')->with('success', 'Événement modifié avec succès.');
+}
 }

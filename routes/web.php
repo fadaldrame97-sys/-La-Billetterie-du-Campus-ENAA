@@ -35,6 +35,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/admin/event/{event}/edit',[EventController::class,'edit'])->name('events.edit');
 
     Route::put('/admin/events/{event}', [EventController::class, 'update'])->name('events.update');
+
+    Route::delete('/admin/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
     
     
 });
