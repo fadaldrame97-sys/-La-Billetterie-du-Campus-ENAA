@@ -93,6 +93,29 @@
 
     <hr class="my-4">
 
+    <div class="mt-6 flex gap-3 justify-end ">
+
+        <a href="{{ route('events.edit', $event) }}"
+           class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg">
+            Modifier
+        </a>
+
+        <form action="{{ route('events.destroy', $event) }}" method="POST">
+
+            @csrf
+            @method('DELETE')
+
+            <button
+                type="submit"
+                onclick="return confirm('Supprimer cet événement ?')"
+                class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">
+                Supprimer
+            </button>
+
+        </form>
+
+    </div>
+
     <h3 class="font-bold text-lg mb-3">
         Étudiants inscrits
     </h3>
@@ -119,56 +142,13 @@
 
     @endif
 
-    <div class="mt-6 flex gap-3">
-
-        <a href="{{ route('events.edit', $event) }}"
-           class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg">
-            Modifier
-        </a>
-
-        <form action="{{ route('events.destroy', $event) }}" method="POST">
-
-            @csrf
-            @method('DELETE')
-
-            <button
-                type="submit"
-                onclick="return confirm('Supprimer cet événement ?')"
-                class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">
-                Supprimer
-            </button>
-
-        </form>
-
-    </div>
+    
 
 </div>
 
-<div class="mt-4 flex gap-3">
+   
 
-    <a href="{{ route('events.edit', $event) }}"
-       class="bg-yellow-500 text-white px-4 py-2 rounded">
-        Modifier
-    </a>
-
-    <form action="{{ route('events.destroy', $event) }}"
-          method="POST">
-
-        @csrf
-        @method('DELETE')
-
-        <button
-            class="bg-red-600 text-white px-4 py-2 rounded"
-            onclick="return confirm('Supprimer cet événement ?')">
-
-            Supprimer
-
-        </button>
-
-    </form>
-
-</div>
-
+    
 
 
 @endforeach

@@ -16,6 +16,8 @@
         <h1 class="text-2xl font-bold">
             BDE-Events
         </h1>
+         <h1 class="text-xl font-semibold text-emerald-400">
+        Bonjour, {{ Auth::user()->name }}</h1>
 
         <div class="flex items-center gap-4">
 
