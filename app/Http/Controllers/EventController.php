@@ -53,4 +53,10 @@ class EventController extends Controller
 
 
     }
+
+    public function edi(Event $event){
+        
+        return view('admin.events.edit',compact('event'));
+
+    }
 }
