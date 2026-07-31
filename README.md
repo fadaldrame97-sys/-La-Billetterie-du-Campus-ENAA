@@ -56,6 +56,8 @@ L'objectif est de permettre au Bureau des Étudiants (BDE) de gérer les événe
 - Tailwind CSS
 - Git & GitHub
 
+
+
 ---
 
 ## Base de données
@@ -69,6 +71,22 @@ L'application est composée de trois tables principales :
 Une réservation est liée à un utilisateur et à un événement.
 
 ---
+
+## Diagramme UML
+
+[Diagramme UML](docs/uml/Event_bde_UML.png)
+
+---
+
+## USE CASE
+
+[USE CASE](docs/uml/JuryBlanc.png)
+
+## Diagramme ERD
+
+![Diagramme ERD](docs/uml/JuryBlanc.png)
+
+
 
 ## Installation
 
@@ -141,3 +159,4 @@ MVC
 ## Auteur
 
 Projet réalisé par **Mouhamadou Fadal Dramé** dans le cadre du brief **BDE-Events** à ENAA Digital Center.
+

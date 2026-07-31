@@ -9,7 +9,10 @@ class EventController extends Controller
 {
     public function index()
     {
-      $events=Event::all();
+      $events=Event::all()->filter(function($event){
+           return $event->price->count()->avg('events','price')->get(); 
+      });
+   
 
         return view('admin.dashboard',compact('events'));
     }
