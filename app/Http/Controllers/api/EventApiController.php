@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Event;
 
-class EventController extends Controller
+class EventApiController extends Controller
 {
-    //
+    public function index()
+    {
+        return response()->json(Event::all());
+    }
 }
