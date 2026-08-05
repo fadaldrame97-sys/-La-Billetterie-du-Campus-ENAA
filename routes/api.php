@@ -10,6 +10,14 @@ Route::get('/events', [EventApiController::class, 'index']);
 Route::get('/events/{event}', [EventApiController::class, 'show']);
 
 
+Route::middleware('auth:sanctum')->group(function () {
+
+    Route::post('/events/{event}/book', [ReservationApiController::class, 'store']);
+
+    Route::get('/user/tickets', [ReservationApiController::class, 'index']);
+
+});
+
 Route::middleware(['auth:sanctum', 'isAdmin'])->group(function () {
 
     Route::post('/events', [EventApiController::class, 'store']);
