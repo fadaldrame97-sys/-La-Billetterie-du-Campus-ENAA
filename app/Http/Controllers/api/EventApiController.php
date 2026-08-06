@@ -11,4 +11,9 @@ class EventApiController extends Controller
     {
         return response()->json(Event::all());
     }
+
+    public function show(Event $event){
+    
+    return response()->json($event);
+    }
 }
