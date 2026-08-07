@@ -5,14 +5,14 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class EventResquest extends FormRequest
+class UpdateEventRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -23,9 +23,6 @@ class EventResquest extends FormRequest
     public function rules(): array
     {
         return [
-
-       
-
         'title' => 'required',
         'description' => 'required',
         'date' => 'required',
@@ -33,14 +30,6 @@ class EventResquest extends FormRequest
         'location' => 'required',
         'price' => 'required|integer',
         'capacity' => 'required|integer|min:1',
-
         ];
-            
-             
-        
     }
-     
-
-    
-
 }
