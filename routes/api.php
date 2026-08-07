@@ -16,6 +16,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/user/tickets', [ReservationApiController::class, 'index']);
 
+   
+
 });
 
 Route::middleware(['auth:sanctum', 'isAdmin'])->group(function () {
@@ -23,6 +25,7 @@ Route::middleware(['auth:sanctum', 'isAdmin'])->group(function () {
     Route::post('/events', [EventApiController::class, 'store']);
     Route::put('/events/{event}', [EventApiController::class, 'update']);
     Route::delete('/events/{event}', [EventApiController::class, 'destroy']);
+  ;
 
 });
 
