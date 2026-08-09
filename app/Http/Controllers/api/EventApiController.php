@@ -31,6 +31,12 @@ class EventApiController extends Controller
         );
     }
 
+    public function stats(){
+    return response()->json(
+        $this->eventService->getEventsStats()
+    );
+    }
+
     public function store(StoreEventRequest $request)
     {
         $event = $this->eventService
