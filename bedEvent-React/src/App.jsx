@@ -6,15 +6,18 @@ function App() {
   useEffect(()=>{
       api.get('/events')
       .then(Response=>{
-        console.log(Response.data)
+        console.log(Response.data);
       })
 
-  })
+      .catch(error=>{
+        console.log(error)
+      });
+      
+
+  },[])
   
 
-  return (
-
-  )
+  return <h1>BDE-EVENTS</h1>
     
 }
 
