@@ -5,6 +5,9 @@ namespace App\Services;
 use App\Models\Event;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+
+
 
 class ReservationService
 {
@@ -17,7 +20,7 @@ class ReservationService
 
     public function createReservation(Event $event)
     {
-        // Vérifier si l'étudiant a déjà réservé
+      
         $dejaReserve = Reservation::where('user_id', Auth::id())
             ->where('event_id', $event->id)
             ->exists();
@@ -29,11 +32,10 @@ class ReservationService
             ];
         }
 
-        // Compter les réservations
+       
         $nombreReservations = Reservation::where('event_id', $event->id)
             ->count();
 
-        // Vérifier la capacité
         if ($nombreReservations >= $event->capacity) {
             return [
                 'success' => false,
@@ -41,11 +43,11 @@ class ReservationService
             ];
         }
 
-        // Créer la réservation
+    
         $reservation = Reservation::create([
             'user_id' => Auth::id(),
             'event_id' => $event->id,
-            'ticket_code' => 'BDE-' . uniqid(),
+           'ticket_code' => 'BDE-2026-' . Str::upper(Str::random(5)),
         ]);
 
         return [
