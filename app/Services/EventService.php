@@ -16,6 +16,19 @@ class EventService
         return $event;
     }
 
+
+    public function getEventsStats(){
+    $events = Event::withCount('reservations')->get();
+
+    foreach ($events as $event) {
+        $event->nombre_reservations = $event->reservations_count;
+        $event->places_restantes = $event->capacity - $event->reservations_count;
+    }
+
+    return $events;
+    }
+    
+
     public function createEvent(array $data)
     {
         return Event::create($data);
