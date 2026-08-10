@@ -19,6 +19,29 @@ function AdminDashboard() {
 
     }, []);
 
+
+         
+      const updateEvent = () => {
+
+    api.put(`/events/${editingEvent.id}`, {
+        title: editingEvent.title,
+        date: editingEvent.date,
+        time: editingEvent.time,
+        capacity: editingEvent.capacity
+    })
+    .then(response => {
+
+        console.log(response.data);
+
+    })
+    .catch(error => {
+
+        console.log(error);
+
+    });
+    };
+
+       
     return (
         <div>
 
@@ -30,11 +53,17 @@ function AdminDashboard() {
 
                  <h2>Modifier l'événement</h2>
 
-                 <input type="text" value={editingEvent.title} />
-                 <input type="date" value={editingEvent.date}/>
-                 <input type="time" value={editingEvent.time}  />
-                 <input type="number" value={editingEvent.capacity} />
-             <button> Enregistrer </button>
+                 <input type="text" value={editingEvent.title} onChange={(e) => {
+
+                         setEditingEvent({...editingEvent,title: e.target.value });  }}  />
+
+                 <input type="date" value={editingEvent.date}   onChange={(e) => {
+                         setEditingEvent({...editingEvent,date: e.target.value });  }}  />
+                 <input type="time" value={editingEvent.time}  onChange={(e) => {
+                        setEditingEvent({...editingEvent,time: e.target.value });  }}  />
+                 <input type="number" value={editingEvent.capacity} onChange={(e) => {
+                        setEditingEvent({...editingEvent,capacity: e.target.value });  }}  />                                     
+            <button onClick={updateEvent}> Enregistrer </button>
 
         </div>
           )}
@@ -53,7 +82,19 @@ function AdminDashboard() {
             ))}
 
         </div>
+
+
+    
+
+
+
+     
     );
+
+
+
+        
+
 }
 
 export default AdminDashboard;
