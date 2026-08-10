@@ -10,6 +10,7 @@ function Home() {
       api.get('/events')
       .then(Response=>{
         console.log(Response.data);
+        setEvents(Response.data);
       })
 
       .catch(error=>{
@@ -20,7 +21,21 @@ function Home() {
   },[])
   
 
-return <h1>BDE-Events</h1>;
+return (
+
+  <div> 
+   <h1>BDE-Events</h1>
+
+   {events.map(events=>(
+
+    <EventCard key={event.id} events={event}/> 
+
+   ))}
+
+   </div> 
+);
+
+
     
 }
 
