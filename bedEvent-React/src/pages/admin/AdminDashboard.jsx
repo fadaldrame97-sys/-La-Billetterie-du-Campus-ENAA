@@ -4,7 +4,7 @@ import api from '../services/api';
 function AdminDashboard() {
 
     const [events, setEvents] = useState([]);
-    const [editingEvent, setEditingEvent] = useState([null]);
+    const [editingEvent, setEditingEvent] = useState(null);
 
 
 
@@ -23,6 +23,21 @@ function AdminDashboard() {
         <div>
 
             <h1>Dashboard Admin</h1>
+
+
+            {editingEvent && (
+            <div>
+
+                 <h2>Modifier l'événement</h2>
+
+                 <input type="text" value={editingEvent.title} />
+                 <input type="date" value={editingEvent.date}/>
+                 <input type="time" value={editingEvent.time}  />
+                 <input type="number" value={editingEvent.capacity} />
+             <button> Enregistrer </button>
+
+        </div>
+          )}
 
             {events.map(event => (
                 <div key={event.id}>
