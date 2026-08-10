@@ -1,15 +1,37 @@
-
-function EventCard({event}){
+function EventCard({ event }) {
     return (
-        <div>
-            <h1>{event.title}</h1>
-            <p>{event.description}</p>
-            <p>{event.date}</p>
-            <p>{event.time}</p>
-            <p>{event.location}</p>
-            <p>{event.price} DH</p>
-            <p>Capacité:{event.capacity}</p>
+        <div className="border rounded-lg p-5 shadow">
+            <h2 className="text-xl font-bold">
+                {event.title}
+            </h2>
+
+            <p className="mt-2 text-gray-600">
+                {event.description}
+            </p>
+
+            <div className="mt-4 space-y-1">
+                <p>
+                    <strong>Date :</strong> {event.date}
+                </p>
+
+                <p>
+                    <strong>Heure :</strong> {event.time}
+                </p>
+
+                <p>
+                    <strong>Lieu :</strong> {event.location}
+                </p>
+
+                <p>
+                    <strong>Prix :</strong> {event.price} DH
+                </p>
+
+                <p>
+                    <strong>Capacité :</strong> {event.capacity}
+                </p>
+            </div>
         </div>
-    )
+    );
 }
+
 export default EventCard;
