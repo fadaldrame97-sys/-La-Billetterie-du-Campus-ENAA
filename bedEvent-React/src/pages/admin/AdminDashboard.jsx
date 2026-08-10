@@ -4,6 +4,9 @@ import api from '../services/api';
 function AdminDashboard() {
 
     const [events, setEvents] = useState([]);
+    const [editingEvent, setEditingEvent] = useState([null]);
+
+
 
     useEffect(() => {
 
@@ -28,7 +31,7 @@ function AdminDashboard() {
                     <p> {event.date} à {event.time} </p>
                     <p>Capacité : {event.capacity}</p>
 
-                    <button>Modifier </button>
+                    <button onClick={()=>setEditingEvent(event)}>Modifier </button>
                     <button>Supprimer </button>
 
                 </div>
