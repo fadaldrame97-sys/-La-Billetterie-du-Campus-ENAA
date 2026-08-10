@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import api from '../services/api';
-import EventCard from './components/EventCard';
+import EventCard from '../components/EventCard';
 
 function Home() {
 
@@ -28,7 +28,7 @@ return (
 
    {events.map(events=>(
 
-    <EventCard key={event.id} events={event}/> 
+    <EventCard key={event.id} event={event}/> 
 
    ))}
 
