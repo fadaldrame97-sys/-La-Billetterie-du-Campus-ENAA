@@ -1,9 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import api from '../services/api';
 
 function Home() {
 
-  useEffect(()=>{
+    const [events,setEvents]=useState([]);
+
+    useEffect(()=>{
       api.get('/events')
       .then(Response=>{
         console.log(Response.data);
