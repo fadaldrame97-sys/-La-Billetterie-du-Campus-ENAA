@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import api from '../services/api';
 import EventCard from '../components/EventCard';
 
+
 function Home() {
 
     const [events, setEvents] = useState([]);
