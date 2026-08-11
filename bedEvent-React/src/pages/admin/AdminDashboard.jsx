@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 
 function AdminDashboard() {
+
+    const navigate = useNavigate();
 
     const [events, setEvents] = useState([]);
     const [editingEvent, setEditingEvent] = useState(null);
@@ -104,7 +107,13 @@ function AdminDashboard() {
                 </div>
             ))}
 
+            <button onClick={() => navigate('/admin/events/create')}>
+    Créer un événement
+</button>
+
         </div>
+
+        
 
      
     );
