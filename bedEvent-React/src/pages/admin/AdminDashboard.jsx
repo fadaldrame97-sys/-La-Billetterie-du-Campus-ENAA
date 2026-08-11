@@ -31,6 +31,8 @@ function AdminDashboard() {
         description: editingEvent.description,
         date: editingEvent.date,
         time: editingEvent.time,
+        location: editingEvent.location,
+        price: editingEvent.price,
         capacity: editingEvent.capacity
     })
     .then(response => {  console.log(response.data); 
@@ -91,6 +93,16 @@ function AdminDashboard() {
                          setEditingEvent({...editingEvent,date: e.target.value });  }}  className="border border-gray-300 rounded p-2"  />
                     <input type="time" value={editingEvent.time}  onChange={(e) => {
                         setEditingEvent({...editingEvent,time: e.target.value });  }} className="border border-gray-300 rounded p-2" />
+
+                    
+                        <input type="text" value={editingEvent.location} onChange={(e) => {
+                        setEditingEvent({...editingEvent, location: e.target.value });  }} 
+                            className="border border-gray-300 rounded p-2"/>
+                       
+                       <input type="number" value={editingEvent.price} onChange={(e) => {
+                          setEditingEvent({...editingEvent, price: e.target.value });  }} 
+                            className="border border-gray-300 rounded p-2"/>
+
                     <input type="number" value={editingEvent.capacity} onChange={(e) => {
                         setEditingEvent({...editingEvent,capacity: e.target.value });  }}  className="border border-gray-300 rounded p-2" />                                     
                     <button onClick={updateEvent} className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"> Enregistrer </button>
@@ -106,6 +118,11 @@ function AdminDashboard() {
                     <h2  className="text-xl font-bold text-gray-800 mb-2">{event.title}</h2>
                     <p className="text-gray-600 mb-3">{event.description}</p>
                     <p className="text-gray-700"> <strong>Date :</strong> {event.date} à {event.time} </p>
+
+
+
+
+
                     <p className="text-gray-700 mb-4"> <strong>Capacité :</strong> {event.capacity}</p>
 
                     <div className="flex gap-2">
