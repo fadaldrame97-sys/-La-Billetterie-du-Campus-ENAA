@@ -21,25 +21,44 @@ function AdminDashboard() {
 
 
          
-      const updateEvent = () => {
+    function updateEvent () {
 
     api.put(`/events/${editingEvent.id}`, {
         title: editingEvent.title,
+        description: editingEvent.description,
         date: editingEvent.date,
         time: editingEvent.time,
         capacity: editingEvent.capacity
     })
-    .then(response => {
+    .then(response => {  console.log(response.data); 
+      
+            setEvents(events.map(event =>
+            event.id === editingEvent.id
+                ? response.data.event
+                : event
+                ));
 
-        console.log(response.data);
 
-    })
-    .catch(error => {
 
-        console.log(error);
 
-    });
+     })
+    .catch(error => { console.log(error); });
     };
+
+
+
+     function deleteEvent(id) {
+
+        api.delete(`/events/${id}`)
+        .then(response => { console.log(response.data);
+
+            setEvents(events.filter(event => event.id !== id));
+
+        })
+        .catch(error => { console.log(error); });
+        }
+
+
 
        
     return (
@@ -49,24 +68,29 @@ function AdminDashboard() {
 
 
             {editingEvent && (
-            <div>
+                <div>
 
-                 <h2>Modifier l'événement</h2>
+                    <h2>Modifier l'événement</h2>
 
-                 <input type="text" value={editingEvent.title} onChange={(e) => {
+                    <input type="text" value={editingEvent.title} onChange={(e) => {
 
                          setEditingEvent({...editingEvent,title: e.target.value });  }}  />
 
-                 <input type="date" value={editingEvent.date}   onChange={(e) => {
-                         setEditingEvent({...editingEvent,date: e.target.value });  }}  />
-                 <input type="time" value={editingEvent.time}  onChange={(e) => {
-                        setEditingEvent({...editingEvent,time: e.target.value });  }}  />
-                 <input type="number" value={editingEvent.capacity} onChange={(e) => {
-                        setEditingEvent({...editingEvent,capacity: e.target.value });  }}  />                                     
-            <button onClick={updateEvent}> Enregistrer </button>
+                    <textarea value={editingEvent.description} onChange={(e) => {
+                    setEditingEvent({ ...editingEvent,description: e.target.value }); }} />         
 
-        </div>
-          )}
+                    <input type="date" value={editingEvent.date}   onChange={(e) => {
+                         setEditingEvent({...editingEvent,date: e.target.value });  }}  />
+                    <input type="time" value={editingEvent.time}  onChange={(e) => {
+                        setEditingEvent({...editingEvent,time: e.target.value });  }}  />
+                    <input type="number" value={editingEvent.capacity} onChange={(e) => {
+                        setEditingEvent({...editingEvent,capacity: e.target.value });  }}  />                                     
+                    <button onClick={updateEvent}> Enregistrer </button>
+
+                </div>
+            )}
+
+
 
             {events.map(event => (
                 <div key={event.id}>
@@ -74,26 +98,16 @@ function AdminDashboard() {
                     <p>{event.description}</p>
                     <p> {event.date} à {event.time} </p>
                     <p>Capacité : {event.capacity}</p>
-
                     <button onClick={()=>setEditingEvent(event)}>Modifier </button>
-                    <button>Supprimer </button>
+                    <button onClick={()=>deleteEvent(event.id)}>Supprimer </button>
 
                 </div>
             ))}
 
         </div>
 
-
-    
-
-
-
      
     );
-
-
-
-        
 
 }
 
