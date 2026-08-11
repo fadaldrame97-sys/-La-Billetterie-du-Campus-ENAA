@@ -14,6 +14,11 @@ function createEvent(){
       .then(Response=>{
         console.log(Response.date);
       })
+
+      .catch(error=>{
+        console.log(error);
+      });
+      
 }
 
 
