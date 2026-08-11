@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import ProfileTickets from './pages/ProfileTickets';
 import AdminDashboard from './pages/admin/AdminDashboard';
-import Create from './pages/admin/Create';
+import CreateEvent from './pages/admin/CreateEvent';
 
 function App() {
     return (
@@ -18,15 +18,10 @@ function App() {
 
              
 
-                <Route
-                    path="/profile/tickets"
-                    element={<ProfileTickets />}
-                />
+                <Route path="/profile/tickets" element={<ProfileTickets />}/>
 
-                <Route
-                    path="/admin"
-                    element={<AdminDashboard />}
-                />
+                <Route path="/admin" element={<AdminDashboard />}/>
+                 <Route path="/admin" element={<CreateEvent />}/>
 
             </Routes>
 

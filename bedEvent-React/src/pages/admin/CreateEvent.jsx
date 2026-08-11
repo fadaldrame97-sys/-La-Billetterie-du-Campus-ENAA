@@ -1,14 +1,14 @@
-import { useState } from "react";
-import api from './services/api';
+import { useState } from 'react';
+import api from '../../services/api';
 
-function create(){
+function Create(){
 
     const [event, setEvents]=useState({
 
         title:'' ,  description:'', date:'', time:'', location:'', price:'', capacity:''  });
 }
 
-function createEvent(){
+function CreateEvent(){
 
     api.post('/events, event')
       .then(Response=>{
@@ -18,6 +18,13 @@ function createEvent(){
       .catch(error=>{
         console.log(error);
       });
+
+
+      return(
+        <div>
+            <h1>Créer un évènement</h1>
+        </div>
+      )
       
 }
 
