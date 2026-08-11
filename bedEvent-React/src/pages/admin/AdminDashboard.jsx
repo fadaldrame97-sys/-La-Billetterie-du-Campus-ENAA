@@ -40,6 +40,8 @@ function AdminDashboard() {
                 ? response.data.event
                 : event
                 ));
+             setEditingEvent(null);
+
 
 
 
@@ -56,7 +58,7 @@ function AdminDashboard() {
         .then(response => { console.log(response.data);
 
             setEvents(events.filter(event => event.id !== id));
-
+          
         })
         .catch(error => { console.log(error); });
         }
@@ -97,7 +99,7 @@ function AdminDashboard() {
             </div>
             )}
 
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
             {events.map(event => (
                 <div key={event.id} className="bg-white p-5 rounded-lg shadow">
@@ -114,6 +116,7 @@ function AdminDashboard() {
 
                 </div>
             ))}
+            </div>
 
             <button onClick={() => navigate('/admin/events/create')} className="mt-8 bg-green-600 text-white px-5 py-3 rounded-lg hover:bg-green-700"
            >

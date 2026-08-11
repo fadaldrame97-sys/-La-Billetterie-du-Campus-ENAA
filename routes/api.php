@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\ReservationApiController;
 use App\Http\Controllers\Api\AuthApiController;
 
 
+Route::post('/login', [AuthApiController::class, 'login']);
 
 
 Route::get('/events', [EventApiController::class, 'index']);
