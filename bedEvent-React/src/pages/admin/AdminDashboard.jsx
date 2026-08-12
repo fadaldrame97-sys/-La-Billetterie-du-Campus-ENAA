@@ -6,6 +6,8 @@ function AdminDashboard() {
 
     const navigate = useNavigate();
 
+
+    const [stats, setStats] = useState([]);
     const [events, setEvents] = useState([]);
     const [editingEvent, setEditingEvent] = useState(null);
 
@@ -52,10 +54,6 @@ function AdminDashboard() {
                 : event
                 ));
              setEditingEvent(null);
-
-
-
-
 
      })
     .catch(error => { console.log(error); });
@@ -123,6 +121,8 @@ function AdminDashboard() {
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
             {events.map(event => (
+
+                
                 <div key={event.id} className="bg-white p-5 rounded-lg shadow">
                     <h2  className="text-xl font-bold text-gray-800 mb-2">{event.title}</h2>
                     <p className="text-gray-600 mb-3">{event.description}</p>
