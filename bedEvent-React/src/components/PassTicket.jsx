@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import api from '../services/api';
 
-function ProfileTickets() {
+function PassTicket() {
 
     const [tickets, setTickets] = useState([]);
 
@@ -23,15 +23,15 @@ function ProfileTickets() {
 
             <div className="max-w-6xl mx-auto">
 
-                <h1 className="text-3xl font-bold text-gray-800 mb-6">
+                <h1 className="text-3xl font-bold text-gray-800 mb-8">
                     Mes billets
                 </h1>
 
                 {tickets.length === 0 ? (
 
-                    <div className="bg-white p-6 rounded-lg shadow">
+                    <div className="bg-white p-8 rounded-lg shadow text-center">
                         <p className="text-gray-600">
-                            Vous n'avez encore réservé aucun événement.
+                            Vous n'avez encore aucune réservation.
                         </p>
                     </div>
 
@@ -46,11 +46,11 @@ function ProfileTickets() {
                                 className="bg-white rounded-lg shadow p-6"
                             >
 
-                                <h2 className="text-xl font-bold text-gray-800 mb-3">
+                                <h2 className="text-xl font-bold text-gray-800 mb-4">
                                     {ticket.event.title}
                                 </h2>
 
-                                <p className="text-gray-600 mb-4">
+                                <p className="text-gray-600 mb-2">
                                     {ticket.event.description}
                                 </p>
 
@@ -68,7 +68,7 @@ function ProfileTickets() {
 
                                 <div className="mt-5 p-4 bg-blue-50 rounded-lg">
 
-                                    <p className="text-sm text-gray-500">
+                                    <p className="text-sm text-gray-600">
                                         Code du billet
                                     </p>
 
@@ -92,4 +92,4 @@ function ProfileTickets() {
     );
 }
 
-export default ProfileTickets;
+export default PassTicket;   

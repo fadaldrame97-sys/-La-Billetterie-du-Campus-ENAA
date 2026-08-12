@@ -1,9 +1,7 @@
+import PassTicket from '../components/PassTicket';
+
 function ProfileTickets() {
-    return (
-        <div>
-            <h1>Mes billets</h1>
-        </div>
-    );
+    return <PassTicket />;
 }
 
 export default ProfileTickets;
