@@ -18,6 +18,15 @@ function Login() {
 
             localStorage.setItem('token', response.data.token);
 
+
+            const user = response.data.user;
+
+            if (user.role === 'admin') {
+             navigate('/admin');
+           } else {
+            navigate('/');
+    }
+
         })
         .catch(error => {
 
