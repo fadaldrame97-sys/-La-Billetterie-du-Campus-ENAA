@@ -20,6 +20,15 @@ function AdminDashboard() {
             })
             .catch(error => { console.log(error);});
 
+            api.get('/admin/events/stats')
+        .then(response => {
+            console.log(response.data);
+            setStats(response.data);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
     }, []);
 
 
