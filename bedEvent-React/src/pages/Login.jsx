@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import api from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -9,30 +11,28 @@ function Login() {
     function login() {
 
         api.post('/login', {
-            email: email,
-            password: password
-        })
-        .then(response => {
+    email: email,
+    password: password
+    })
+     .then(response => {
 
-            console.log(response.data);
+      console.log(response.data);
 
-            localStorage.setItem('token', response.data.token);
+      localStorage.setItem('token', response.data.token);
 
+       const user = response.data.user;
 
-            const user = response.data.user;
+       if (user.role === 'admin') {
+        navigate('/admin');
+       } 
+       else {
+        navigate('/');
+       }
 
-            if (user.role === 'admin') {
-             navigate('/admin');
-           } else {
-            navigate('/');
-    }
-
-        })
-        .catch(error => {
-
-            console.log(error);
-
-        });
+     })
+    .catch(error => {
+      console.log(error);
+     });
     }
 
     return (
