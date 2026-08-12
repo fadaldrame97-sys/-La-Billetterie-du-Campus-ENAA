@@ -10,7 +10,7 @@ function Login() {
 
     function login() {
 
-        api.post('/login', {
+    api.post('/login', {
     email: email,
     password: password
     })
@@ -18,9 +18,14 @@ function Login() {
 
       console.log(response.data);
 
-      localStorage.setItem('token', response.data.token);
+        localStorage.setItem('token', response.data.token);
 
-       const user = response.data.user;
+        localStorage.setItem(
+            'user',
+            JSON.stringify(response.data.user)
+        );
+
+        const user = response.data.user;
 
        if (user.role === 'admin') {
         navigate('/admin');
