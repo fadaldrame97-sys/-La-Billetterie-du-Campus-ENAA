@@ -158,6 +158,10 @@ function AdminDashboard() {
                     {stat ? stat.places_restantes : event.capacity}
                 </p>
 
+                <p className="text-gray-700">
+                   <strong>Prix :</strong> {event.price} DH
+                 </p>
+
                 <div className="flex gap-2 mt-4">
 
                     <button
