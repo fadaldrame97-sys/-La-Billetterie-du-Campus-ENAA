@@ -1,9 +1,12 @@
-function EventCard({ event }) {
-     
+import api from '../services/api';
 
-    function EventCard({ event }) {
+function EventCard({ event }) {
+
+     const user = JSON.parse(localStorage.getItem('user'));
 
     function reserve() {
+
+       
 
         api.post(`/events/${event.id}/book`)
             .then(response => {
@@ -17,39 +20,35 @@ function EventCard({ event }) {
 
     }
 
-
-
     return (
-        <div className="border rounded-lg p-5 shadow">
+        <div className="bg-white p-5 rounded-lg shadow">
+
             <h2 className="text-xl font-bold">
                 {event.title}
             </h2>
 
-            <p className="mt-2 text-gray-600">
+            <p className="text-gray-600">
                 {event.description}
             </p>
 
-            <div className="mt-4 space-y-1">
-                <p>
-                    <strong>Date :</strong> {event.date}
-                </p>
+            <p>
+                Date : {event.date}
+            </p>
 
-                <p>
-                    <strong>Heure :</strong> {event.time}
-                </p>
+            <p>
+                Heure : {event.time}
+            </p>
 
-                <p>
-                    <strong>Lieu :</strong> {event.location}
-                </p>
+            <p>
+                Capacité : {event.capacity}
+            </p>
 
-                <p>
-                    <strong>Prix :</strong> {event.price} DH
-                </p>
+            {user && user.role !== 'admin' && (
+    <button onClick={reserve}>
+        Réserver
+    </button>
+)}
 
-                <p>
-                    <strong>Capacité :</strong> {event.capacity}
-                </p>
-            </div>
         </div>
     );
 }
