@@ -1,10 +1,8 @@
 import axios from 'axios';
 
-const api=axios.create({
-     baseURL : 'http://localhost:8000/api',
+const api = axios.create({
+    baseURL: 'http://localhost:8000/api'
 });
-export default api;
-
 
 api.interceptors.request.use(config => {
 
@@ -16,3 +14,5 @@ api.interceptors.request.use(config => {
 
     return config;
 });
+
+export default api;
