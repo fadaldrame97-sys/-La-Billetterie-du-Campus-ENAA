@@ -63,7 +63,13 @@ function EventCard({ event }) {
                     Réserver
                 </button>
 
+
+                
+
             )}
+
+
+            
 
         </div>
     );

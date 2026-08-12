@@ -14,21 +14,22 @@ class AuthApiController extends Controller
     ) {}
 
     public function login(LoginRequest $request)
-    {
-        $token = $this->authService->login(
-            $request->validated()
-        );
+{
+    $result = $this->authService->login(
+        $request->validated()
+    );
 
-        if (!$token) {
-            return response()->json([
-                'message' => 'Email ou mot de passe incorrect.'
-            ], 401);
-        }
-
+    if (!$result) {
         return response()->json([
-            'message' => 'Connexion réussie.',
-            'token' => $token
-        ]);
+            'message' => 'Email ou mot de passe incorrect.'
+        ], 401);
+    }
+
+    return response()->json([
+        'message' => 'Connexion réussie.',
+        'token' => $result['token'],
+        'user' => $result['user']
+    ]);
     }
 
     public function logout()

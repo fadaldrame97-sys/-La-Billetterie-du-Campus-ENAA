@@ -17,18 +17,18 @@ class ReservationApiController extends Controller
 
     public function store(Event $event)
     {
-        $reservation = $this->reservationService
+        $result = $this->reservationService
             ->createReservation($event);
 
-        if (!$reservation) {
+        if (!$result['success']) {
             return response()->json([
-                'message' => 'Vous avez déjà réservé ou l’événement est complet.'
+                'message' => $result['message']
             ], 400);
         }
 
         return response()->json([
             'message' => 'Réservation effectuée avec succès.',
-            'reservation' => $reservation
+            'reservation' => $result['reservation']
         ], 201);
     }
 
