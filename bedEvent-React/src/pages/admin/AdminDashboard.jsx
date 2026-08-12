@@ -118,12 +118,21 @@ function AdminDashboard() {
                     <h2  className="text-xl font-bold text-gray-800 mb-2">{event.title}</h2>
                     <p className="text-gray-600 mb-3">{event.description}</p>
                     <p className="text-gray-700"> <strong>Date :</strong> {event.date} à {event.time} </p>
+                    
 
 
 
 
 
                     <p className="text-gray-700 mb-4"> <strong>Capacité :</strong> {event.capacity}</p>
+                    <p className="text-blue-600">   
+                    <strong>Réservations :</strong> {stat ? stat.nombre_reservations : 0}
+                     </p>
+
+                    <p className="text-green-600">
+                    <strong>Places restantes :</strong>
+                    {stat ? stat.places_restantes : event.capacity}
+                    </p>
 
                     <div className="flex gap-2">
                         <button onClick={()=>setEditingEvent(event)} className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Modifier </button>

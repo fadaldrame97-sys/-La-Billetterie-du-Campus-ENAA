@@ -1,14 +1,14 @@
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import api from '../services/api';
 
 function Navbar() {
 
+    const navigate = useNavigate();
 
-        const navigate = useNavigate();
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user'));
 
-        const token = localStorage.getItem('token');
-        const user = JSON.parse(localStorage.getItem('user'));
-        
-        function logout() {
+    function logout() {
 
         api.post('/logout')
             .then(response => {
@@ -25,7 +25,8 @@ function Navbar() {
 
                 console.log(error);
 
-               
+                // Même si le serveur rencontre un problème,
+                // on supprime quand même la session locale
                 localStorage.removeItem('token');
                 localStorage.removeItem('user');
 
@@ -34,13 +35,75 @@ function Navbar() {
     }
 
     return (
+        <nav className="bg-white shadow p-4">
 
-        <nav>
+            <div className="max-w-6xl mx-auto flex justify-between items-center">
 
-            <NavLink to="/"className={({isActive }) =>isActive? 'font-bold text-blue-600' : 'text-gray-600'}> Accueil </NavLink>
-            <NavLink to="/login" className={({isActive }) =>isActive? 'font-bold text-blue-600' : 'text-gray-600'}>Connexion</NavLink> 
-            <NavLink to="/profile/tickets" className={({isActive }) =>isActive? 'font-bold text-blue-600' : 'text-gray-600'}>Mes billets </NavLink>
-            <NavLink to="/admin" className={({isActive }) =>isActive? 'font-bold text-blue-600' : 'text-gray-600'}>Administration</NavLink>
+                <h1
+                    className="text-xl font-bold cursor-pointer"
+                    onClick={() => navigate('/')}
+                >
+                    BDE-Events
+                </h1>
+
+                <div className="flex items-center gap-4">
+
+                    {token && user?.role === 'student' && (
+                        <>
+
+                            <button
+                                onClick={() => navigate('/')}
+                                className="text-gray-700 hover:text-blue-600"
+                            >
+                                Accueil
+                            </button>
+
+                            <button
+                                onClick={() => navigate('/profile/tickets')}
+                                className="text-gray-700 hover:text-blue-600"
+                            >
+                                Mes billets
+                            </button>
+
+                        </>
+                    )}
+
+                    {token && user?.role === 'admin' && (
+
+                        <button
+                            onClick={() => navigate('/admin')}
+                            className="text-gray-700 hover:text-blue-600"
+                        >
+                            Administration
+                        </button>
+
+                    )}
+
+                    {!token && (
+
+                        <button
+                            onClick={() => navigate('/login')}
+                            className="bg-blue-600 text-white px-4 py-2 rounded-lg"
+                        >
+                            Connexion
+                        </button>
+
+                    )}
+
+                    {token && (
+
+                        <button
+                            onClick={logout}
+                            className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
+                        >
+                            Déconnexion
+                        </button>
+
+                    )}
+
+                </div>
+
+            </div>
 
         </nav>
     );
