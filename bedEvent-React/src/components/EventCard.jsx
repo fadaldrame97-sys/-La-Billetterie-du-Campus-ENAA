@@ -1,4 +1,24 @@
 function EventCard({ event }) {
+     
+
+    function EventCard({ event }) {
+
+    function reserve() {
+
+        api.post(`/events/${event.id}/book`)
+            .then(response => {
+                console.log(response.data);
+                alert('Réservation réussie !');
+            })
+            .catch(error => {
+                console.log(error);
+                alert('Erreur lors de la réservation.');
+            });
+
+    }
+
+
+
     return (
         <div className="border rounded-lg p-5 shadow">
             <h2 className="text-xl font-bold">
