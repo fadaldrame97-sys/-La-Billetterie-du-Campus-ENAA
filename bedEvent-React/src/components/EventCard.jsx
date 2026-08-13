@@ -53,6 +53,9 @@ function EventCard({ event }) {
             <p>
                 <strong>Capacité :</strong> {event.capacity}
             </p>
+            <p>
+             <strong>Prix :</strong> {event.price} DH
+            </p>
 
             {user && user.role === 'student' && (
 
