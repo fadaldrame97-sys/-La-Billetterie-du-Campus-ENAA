@@ -1,0 +1,35 @@
+services:
+
+  api:
+    image: fadaldrame/bde-events-api:v1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bde-events-api
+    ports:
+      - "8000:8000"
+    environment:
+      APP_ENV: production
+      APP_DEBUG: "false"
+      APP_KEY: ${APP_KEY}
+      DB_CONNECTION: sqlite
+    volumes:
+      - api_storage:/var/www/html/storage
+      - api_database:/var/www/html/database
+    restart: unless-stopped
+
+  react:
+    image: fadaldrame/bde-events-react:v1
+    build:
+      context: ./bedEvent-React
+      dockerfile: Dockerfile
+    container_name: bde-events-react
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+    restart: unless-stopped
+
+volumes:
+  api_storage:
+  api_database:
