@@ -1,5 +1,23 @@
 services:
 
+  mysql:
+    image: mysql:8.0
+    container_name: bde-events-mysql
+    environment:
+      MYSQL_DATABASE: bde_events
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: bde_user
+      MYSQL_PASSWORD: bde_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
   api:
     image: fadaldrame/bde-events-api:v1
     build:
@@ -12,10 +30,15 @@ services:
       APP_ENV: production
       APP_DEBUG: "false"
       APP_KEY: ${APP_KEY}
-      DB_CONNECTION: sqlite
-    volumes:
-      - api_storage:/var/www/html/storage
-      - api_database:/var/www/html/database
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: bde_events
+      DB_USERNAME: bde_user
+      DB_PASSWORD: bde_password
+    depends_on:
+      mysql:
+        condition: service_healthy
     restart: unless-stopped
 
   react:
@@ -31,5 +54,4 @@ services:
     restart: unless-stopped
 
 volumes:
-  api_storage:
-  api_database:
+  mysql_data:
